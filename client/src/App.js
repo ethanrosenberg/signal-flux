@@ -1,6 +1,7 @@
 import React from 'react';
 import NavigationBar from './components/NavigationBar'
-import PhotoGrid from './components/PhotoGrid'
+import TwitterContainer from './containers/TwitterContainer'
+
 
 import './App.css';
 
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
 
     <NavigationBar />
-    <PhotoGrid />
+    <TwitterContainer />
 
 
     </div>

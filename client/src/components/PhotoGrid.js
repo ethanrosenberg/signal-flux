@@ -7,16 +7,20 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import GPSMap from './GPSMap'
 
+
+
 class PhotoGrid extends React.Component {
   constructor(){
     super();
 
     this.state = {
-      twitterImages: []
+      twitterImages: [],
+      loading: false
     };
   }
 
   componentDidMount() {
+
 
     fetch('http://localhost:3000/')
       .then(r => r.json())
@@ -24,7 +28,8 @@ class PhotoGrid extends React.Component {
         console.log(response)
 
         this.setState({
-          twitterImages: response
+          twitterImages: response,
+          loading: false
         })
 
       })
@@ -36,6 +41,7 @@ render () {
   return (
 
     <div class="images"><br></br>
+
     <Container>
     <GPSMap
     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
