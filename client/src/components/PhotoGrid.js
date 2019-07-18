@@ -5,76 +5,65 @@ import Media from 'react-bootstrap/Media'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 import GPSMap from './GPSMap'
 
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
+import TwitterDataModal from './TwitterDataModal'
+
+import { connect } from 'react-redux';
 
 class PhotoGrid extends React.Component {
-  constructor(){
-    super();
+  constructor() {
+    super()
 
     this.state = {
-      twitterImages: [],
-      loading: false
-    };
+      setModalShow: false
+    }
   }
 
-  componentDidMount() {
-
-
-    fetch('http://localhost:3000/')
-      .then(r => r.json())
-      .then(response =>{
-        console.log(response)
-
-        this.setState({
-          twitterImages: response,
-          loading: false
-        })
-
-      })
-
-  }
 
 render () {
+
 
   return (
 
     <div class="images"><br></br>
 
-    <Container>
-    <GPSMap
-    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-    loadingElement={<div style={{ height: `100%` }} />}
-    locations={this.state.twitterImages}
-    />
     <br></br>
     {
-    this.state.twitterImages.map((result, index) => (
+    this.props.twitterImages.map((result, index) => (
       <>
       <Row>
-      <Col>
-      <Media>
-        <img
-          width={300}
-          height={300}
-          className="mr-3"
-          src={result.imageUrl}
-          alt="Generic placeholder"
-        />
-        <Media.Body>
-          <h5>GPS Info</h5>
-          <p>
-            <GPSInfo key={index} gps={result.gps} />
-          </p>
-        </Media.Body>
-      </Media>
+      <Col sm={true}><Image src={result.imageUrl} height="300" width="300"/><br></br></Col>
+      <Col lg={8}>
+          <Card>
+        <Card.Header as="h5">Photo Url: {result.imageUrl}</Card.Header>
+        <Card.Body>
+          <Card.Title>GPS Information</Card.Title>
+          <Card.Text>
+            <strong>Latitude: </strong>{result.gps.GPSLatitude}
+          </Card.Text>
+          <Card.Text>
+            <strong>Longitude: </strong>{result.gps.GPSLongitude}
+          </Card.Text>
+          <Card.Text>
+            <strong>Date/Time: </strong>{result.gps.GPSDateTime}
+          </Card.Text>
+          <Button variant="primary"  size="sm" onClick={() => this.setState({ setModalShow: true })}>View Full Data</Button>
+          <TwitterDataModal
+           show={this.state.setModalShow}
+           onHide={() => this.setState({ setModalShow: false })}
+         />
+        </Card.Body>
+      </Card>
       </Col>
       </Row>
       </>
     ))
     }
-    </Container>
     </div>
   )
 }
@@ -83,7 +72,15 @@ render () {
 }
 
 
+const mapStateToProps = state => {
+  return {
+    twitterImages: state.twitterImages,
+    loading: state.loading
+  }
+}
 
 
 
-export default PhotoGrid
+
+
+export default connect(mapStateToProps)(PhotoGrid)

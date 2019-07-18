@@ -3,39 +3,58 @@ import LoadingOverlay from 'react-loading-overlay';
 import PhotoGrid from '../components/PhotoGrid'
 import ScaleLoader from 'react-spinners/ScaleLoader'
 import TwitterSearchBar from '../components/TwitterSearchBar';
+import { connect } from 'react-redux';
+import GPSMap from '../components/GPSMap'
+
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class TwitterContainer extends React.Component {
-  constructor(){
-    super();
 
-    this.state = {
-      twitterImages: [],
-      loading: false
-    };
-  }
 
   render() {
 
     return (
 
       <LoadingOverlay
-        active={this.state.loading}
+        active={this.props.loading}
         spinner={<ScaleLoader />}
-        text='Loading your content...'
+        text='Analyzing twitter photos...'
         styles={{
           overlay: (base) => ({
             ...base,
-            background: 'rgba(255, 0, 0, 0.5)'
+            background: 'rgba(68,68,68,0.6)'
           })
         }}
         >
+        <Container>
+        <Row>
+        <Col xl={11}>
         <TwitterSearchBar />
+        <GPSMap
+        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+        loadingElement={<div style={{ height: `100%` }} />}
+        images={this.props.twitterImages}
+        />
         <PhotoGrid />
-        <p>Some content or children or something.</p>
+        </Col>
+        </Row>
+
+        </Container>
       </LoadingOverlay>
 
     )
   }
 }
 
-export default TwitterContainer;
+
+const mapStateToProps = state => {
+  return {
+    loading: state.loading,
+    twitterImages: state.twitterImages
+  }
+}
+
+
+export default connect(mapStateToProps)(TwitterContainer)

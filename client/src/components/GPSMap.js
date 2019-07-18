@@ -10,7 +10,7 @@ class GPSMap extends Component {
       >
       </GoogleMap>
       {
-      this.props.locations.map((result, index) => (
+      this.props.images.map((result, index) => (
 
         <Marker
         title={'The marker`s title will appear as a tooltip.'}
@@ -27,7 +27,7 @@ class GPSMap extends Component {
       <div>
 
         <GoogleMapExample
-          containerElement={ <div style={{ height: `500px`, width: '900px' }} /> }
+          containerElement={ <div style={{ height: `500px`, width: '1000px' }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>

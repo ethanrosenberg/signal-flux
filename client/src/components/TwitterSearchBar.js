@@ -1,5 +1,8 @@
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateTwitterImages, search, updateLoading } from '../actions/twitterActions'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -11,10 +14,14 @@ class TwitterSearchBar extends React.Component {
     const handleSubmit = event => {
 
         event.preventDefault()
+        this.props.updateLoading(true)
+
+        this.props.search(this.props.searchText)
 
       }
 
     return (
+      <><br></br>
       <Container>
       <Row>
       <Col>
@@ -34,10 +41,23 @@ class TwitterSearchBar extends React.Component {
           </Col>
           </Row>
           </Container>
-
+          </>
 
     )
   }
 }
 
-export default TwitterSearchBar;
+
+
+const mapStateToProps = state => {
+  return {
+    twitterImages: state.twitterImages,
+    loading: state.loading
+  }
+}
+
+
+
+
+
+export default connect(mapStateToProps, {updateTwitterImages, search, updateLoading})(TwitterSearchBar)
