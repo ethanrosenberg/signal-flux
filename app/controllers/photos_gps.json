@@ -1,0 +1,29 @@
+[
+  {
+    "imageUrl": "https://pbs.twimg.com/media/D_otOI7XUAY-HDO.jpg",
+    "gps": {
+      "GPSDateTime": null,
+      "GPSLatitude": 34.006951,
+      "GPSLongitude": -118.26101,
+      "GPSPosition": null
+    }
+  },
+  {
+    "imageUrl": "https://raw.githubusercontent.com/ianare/exif-samples/master/jpg/gps/DSCN0025.jpg",
+    "gps": {
+      "GPSDateTime": "2008:10:23 14:41:49.03Z",
+      "GPSLatitude": 33.9898359,
+      "GPSLongitude": -118.0955839,
+      "GPSPosition": "43.468333,11.881389"
+    }
+  },
+  {
+    "imageUrl": "https://pbs.twimg.com/media/D_mOtufXUAAalLF.jpg",
+    "gps": {
+      "GPSDateTime": null,
+      "GPSLatitude": null,
+      "GPSLongitude": null,
+      "GPSPosition": null
+    }
+  }
+]

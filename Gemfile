@@ -9,6 +9,11 @@ ruby '2.6.1'
 gem 'google_custom_search_api'
 gem 'adomain'
 gem 'metainspector'
+gem 'rack-cors'
+gem 'dotenv-rails'
+gem 'exifr', '~> 1.2', '>= 1.2.5'
+
+gem "geo_coord", require: "geo/coord"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
