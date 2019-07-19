@@ -31,12 +31,18 @@ class TwitterContainer extends React.Component {
         <Container>
         <Row>
         <Col xl={11}>
+        {this.props.twitterImages.length > 0 ? null : <><br></br><h2>Enter a twitter username to start!</h2><p>for example: @TomCruise</p></>}
         <TwitterSearchBar />
-        <GPSMap
-        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-        loadingElement={<div style={{ height: `100%` }} />}
-        images={this.props.twitterImages}
-        />
+        {this.props.twitterImages.length > 0 ?
+          <><GPSMap
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          images={this.props.twitterImages}
+          />
+          <br></br><h2>Results for username: {this.props.currentTwitterUsername}</h2></>
+        : null
+       }
+
         <PhotoGrid />
         </Col>
         </Row>
@@ -52,7 +58,8 @@ class TwitterContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     loading: state.loading,
-    twitterImages: state.twitterImages
+    twitterImages: state.twitterImages,
+    currentTwitterUsername: state.currentTwitterUsername
   }
 }
 

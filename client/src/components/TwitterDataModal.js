@@ -2,13 +2,10 @@ import React from 'react';
 
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import { connect } from 'react-redux';
 
 class TwitterDataModal extends React.Component {
-  constructor() {
-    super()
 
-
-  }
   render() {
 
 
@@ -22,14 +19,19 @@ class TwitterDataModal extends React.Component {
       >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          All Data Found
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
         <p>
-          {this.props.data}
-        </p>
+
+        {
+
+
+          this.props.data !== null || this.props.data !== undefined ?
+         <p>{this.props.data.imageUrl}</p>  :
+         null }
+            </p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={this.props.onHide}>Close</Button>
@@ -43,4 +45,11 @@ class TwitterDataModal extends React.Component {
 
 }
 
-export default TwitterDataModal
+const mapStateToProps = state => {
+  return {
+    loading: state.loading
+  }
+}
+
+
+export default connect(mapStateToProps)(TwitterDataModal)

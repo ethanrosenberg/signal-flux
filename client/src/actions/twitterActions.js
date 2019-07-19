@@ -12,6 +12,17 @@ export const updateTwitterImages = value => {
   };
 };
 
+export const updateCurrentTwitterUsername = event => {
+  return {
+    type: "UPDATE_CURRENT_TWITTER_USERNAME",
+    value: event.target.value
+  };
+};
+
+
+
+
+
 export const search = input => {
 
   return dispatch => {

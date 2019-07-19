@@ -15,7 +15,7 @@ class GPSMap extends Component {
         <Marker
         title={'The marker`s title will appear as a tooltip.'}
         name={'SOMA'}
-        position={{lat: result.gps.GPSLatitude, lng: result.gps.GPSLongitude}}
+        position={{lat: parseFloat(result.gps.GPSLatitude), lng: parseFloat(result.gps.GPSLongitude)}}
         />
 
       ))
