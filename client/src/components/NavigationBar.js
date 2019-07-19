@@ -22,9 +22,9 @@ const NavigationBar = () => {
         </Navbar.Brand>
           <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/searchTwitter">Twitter Search</Nav.Link>
+          <Nav.Link href="/searchTwitter">Twitter Analyzer</Nav.Link>
           <Nav.Link href="#pricing">Social Image AI</Nav.Link>
-          <Nav.Link href="#pricing">Cell Analyzer</Nav.Link>
+          <Nav.Link href="/phoneAnalyzer">Phone Analyzer</Nav.Link>
           <Nav.Link href="#pricing">Email Analyzer</Nav.Link>
         </Nav>
       </Navbar>

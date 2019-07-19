@@ -22,12 +22,11 @@ export const updateCurrentTwitterUsername = event => {
 
 
 
-
 export const search = input => {
 
   return dispatch => {
 
-    fetch('http://localhost:3000/')
+    fetch('http://localhost:3000/api/v1/twitterSearch')
       .then(r => r.json())
       .then(response =>{
         dispatch(updateTwitterImages(response))

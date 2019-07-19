@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/', to: 'search#parse'
+  #get '/', to: 'search#parse'
+
+  scope '/api/v1' do
+    get '/twitterSearch', to: 'search#parse'
+    post '/phoneSearch', to: 'phone#search'
+  end
+
 end

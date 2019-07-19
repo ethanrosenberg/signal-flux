@@ -1,13 +1,13 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateTwitterImages, search, updateLoading, updateCurrentTwitterUsername } from '../actions/twitterActions'
+import {  search, updateLoading, updateCurrentPhone, updatePhoneData } from '../actions/phoneActions'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-class TwitterSearchBar extends React.Component {
+class PhoneSearchBar extends React.Component {
 
   render() {
 
@@ -16,7 +16,8 @@ class TwitterSearchBar extends React.Component {
         event.preventDefault()
         this.props.updateLoading(true)
 
-        this.props.search(this.props.searchText)
+        this.props.search(this.props.currentPhone)
+
       }
 
     return (
@@ -31,7 +32,7 @@ class TwitterSearchBar extends React.Component {
                                     </div>
 
                                     <div class="col">
-                                        <input onChange={this.props.updateCurrentTwitterUsername} class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search twitter username"/>
+                                        <input onChange={this.props.updateCurrentPhone} value={this.props.currentPhone} class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search phone number"/>
                                     </div>
 
                                     <div class="col-auto">
@@ -54,8 +55,8 @@ class TwitterSearchBar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    twitterImages: state.twitterImages,
-    loading: state.loading
+    loading: state.loading,
+    currentPhone: state.currentPhone
   }
 }
 
@@ -63,4 +64,4 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps, {updateTwitterImages, search, updateLoading, updateCurrentTwitterUsername})(TwitterSearchBar)
+export default connect(mapStateToProps, {search, updateLoading, updateCurrentPhone, updatePhoneData})(PhoneSearchBar)

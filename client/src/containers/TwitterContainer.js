@@ -24,6 +24,7 @@ class TwitterContainer extends React.Component {
         styles={{
           overlay: (base) => ({
             ...base,
+            height: '800px',
             background: 'rgba(68,68,68,0.6)'
           })
         }}

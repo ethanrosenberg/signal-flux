@@ -105,7 +105,7 @@ file = File.read('app/controllers/photos_gps.json')
    #working
    #render json: get_twitter_photos_gps("https://twitter.com/CarrieWilkerson")
    #file = File.read('app/controllers/photos_gps.json')
-   #sleep 2.2
+   sleep 2.2
    render json: data_hash = JSON.parse(file)
 
 
