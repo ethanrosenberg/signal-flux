@@ -8,6 +8,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers/reducer'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -19,9 +20,11 @@ const store = createStore(
 
 
 ReactDOM.render(
+<Router>
 <Provider store={store}>
   <App />
-</Provider>,
+</Provider>
+</Router>,
    document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

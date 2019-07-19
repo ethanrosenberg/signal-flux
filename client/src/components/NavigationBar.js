@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
+import { Link } from 'react-router-dom'
 
 const NavigationBar = () => {
 
@@ -20,8 +21,8 @@ const NavigationBar = () => {
           {' SignalFLUX'}
         </Navbar.Brand>
           <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">New Search</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/searchTwitter">Twitter Search</Nav.Link>
           <Nav.Link href="#pricing">Social Image AI</Nav.Link>
           <Nav.Link href="#pricing">Cell Analyzer</Nav.Link>
           <Nav.Link href="#pricing">Email Analyzer</Nav.Link>

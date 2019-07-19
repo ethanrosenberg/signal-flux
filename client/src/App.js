@@ -1,7 +1,9 @@
 import React from 'react';
 import NavigationBar from './components/NavigationBar'
 import TwitterContainer from './containers/TwitterContainer'
+import Landing from './components/Landing'
 
+import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -10,7 +12,12 @@ function App() {
     <div className="App">
 
     <NavigationBar />
-    <TwitterContainer />
+    <Switch>
+      <Route exact path="/searchTwitter" component={TwitterContainer} />
+      <Route exact path="/" component={Landing} />
+    </Switch>
+
+
 
 
     </div>
